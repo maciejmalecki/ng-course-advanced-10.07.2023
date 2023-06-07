@@ -8,9 +8,6 @@
 
 <app-book-details
   *ngIf="selectedBook$ | async"
-  [book]="selectedBook$ | async"
-  (saveClicked)="save($event)"
-  (cancelClicked)="deselectBook()"
 >
 
 </app-book-details>

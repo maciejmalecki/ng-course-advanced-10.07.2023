@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {select, Store} from "@ngrx/store";
 import {BooksState} from "../../store/books.reducer";
 import {BooksSelector} from "../../store/books.selectors";
-import {deselectBookAction, loadBooksAction, saveBookAction, selectBookAction} from "../../store/books.actions";
+import {loadBooksAction, selectBookAction} from "../../store/books.actions";
 
 @Component({
   selector: 'app-book-list',
@@ -19,15 +19,6 @@ export class BookListComponent {
     this.books$ = this.store.pipe(select(BooksSelector.getBooks));
     this.selectedBook$ = this.store.pipe(select(BooksSelector.getSelectedBook));
     this.store.dispatch(loadBooksAction());
-  }
-
-  save(book: Book): void {
-    this.store.dispatch(saveBookAction({book}));
-    this.deselectBook();
-  }
-
-  deselectBook(): void {
-    this.store.dispatch(deselectBookAction());
   }
 
   selectBook(book: Book): void {

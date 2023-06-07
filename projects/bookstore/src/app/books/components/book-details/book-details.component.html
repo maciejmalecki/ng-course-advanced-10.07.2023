@@ -1,4 +1,4 @@
-<section id="editor" *ngIf="book">
+<section id="editor" *ngIf="book$ | async">
   <form [formGroup]="formGroup">
     <mat-form-field class="gidc-form-with-hint"
                     [class.gidc-form-valid]="titleFormControl.valid"
@@ -22,7 +22,7 @@
       <mat-error>{{ descriptionFormControl.errors | errorMsg : 'description' }}</mat-error>
     </mat-form-field>
     <div class="d-flex gap-2 flex-row mt-2">
-      <button mat-stroked-button color="primary" (click)="cancelClicked.emit()" id="cancel">Cancel</button>
+      <button mat-stroked-button color="primary" (click)="cancel()" id="cancel">Cancel</button>
       <button mat-flat-button color="primary" (click)="save()" id="save" [disabled]="formGroup.invalid || formGroup.pristine">Save</button>
       <button mat-stroked-button color="primary" (click)="formGroup.enable()">Enable</button>
       <button mat-stroked-button color="primary" (click)="formGroup.disable()">Disable</button>
